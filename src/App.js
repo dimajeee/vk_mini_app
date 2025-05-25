@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
 import { View, SplitLayout, SplitCol, ScreenSpinner } from '@vkontakte/vkui';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
-import { Persik, Home, Smeshariki} from './panels';
+import { Persik, Home, Smeshariki, ResultPanel} from './panels';
 import { DEFAULT_VIEW_PANELS } from './routes';
 
 export const App = () => {
@@ -26,6 +26,7 @@ export const App = () => {
           <Home id="home" fetchedUser={fetchedUser} />
           <Persik id="persik" />
           <Smeshariki id="smeshariki" />
+          <ResultPanel id="result" />
         </View>
       </SplitCol>
       {popout}

@@ -8,6 +8,7 @@ import results from '../assets/smeshariki/results';
 export const Smeshariki = ({ id }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
+  const routeNavigator = useRouteNavigator()
 
   const calculateResult = (answers) => {
     const stats = {};
@@ -22,15 +23,15 @@ export const Smeshariki = ({ id }) => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      const result = calculateResult(newAnswers);
-      const { description, memeText } = results[result];
-      alert(`🎉 Ты - ${result}!\n\n${description}\n\n«${memeText}»`);
+      const resultCharacter = calculateResult(newAnswers);
+      const resultData = {
+        character: resultCharacter,
+        ...results[resultCharacter]
+      };
       
-      // Сброс теста
-      setTimeout(() => {
-        setCurrentQuestion(0);
-        setAnswers([]);
-      }, 1000);
+      localStorage.setItem('smeshariki_result', JSON.stringify(resultData));
+      
+      routeNavigator.push('/result');
     }
   };
 
