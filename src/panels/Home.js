@@ -22,6 +22,14 @@ export const Home = ({ id, fetchedUser }) => {
           <Button stretched size="l" mode="secondary" onClick={() => routeNavigator.push('persik')}>
             Покажите Персика, пожалуйста!
           </Button>
+          <Button 
+            stretched 
+            size="l" 
+            mode="secondary" 
+            onClick={() => routeNavigator.push('smeshariki')}
+          >
+            Какой ты Смешарик?
+          </Button>
         </Div>
       </Group>
     </Panel>
